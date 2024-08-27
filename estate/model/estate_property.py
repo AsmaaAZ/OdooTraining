@@ -27,8 +27,11 @@ class EstateProperty(models.Model):
                    ('east','East'),
                    ('west','West')], help="Type for garden ori idk what that is")
     active = fields.Boolean(default = True)
-    state = fields.Selection(string='Type', selction=[('new','New'),
+    state = fields.Selection(string='Type', selection=[('new','New'),
                                              ('offer_received','Offer Received'),
                                              ('offer_accepted','Offer Accepted'),
                                              ('sold','Sold'),
-                                             ('canceled','Canceled')], help='this is the state', copy=False,default='new')
+                                             ('canceled','Canceled')],
+                             help='this is the state',
+                             copy=False,
+                             default='new')
