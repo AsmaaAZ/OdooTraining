@@ -27,7 +27,7 @@ class EstateProperty(models.Model):
                    ('east','East'),
                    ('west','West')], help="Type for garden ori idk what that is")
     active = fields.Boolean(default = True)
-    state = fields.Selection(string='Type', selection=[('new','New'),
+    state = fields.Selection(selection=[('new','New'),
                                              ('offer_received','Offer Received'),
                                              ('offer_accepted','Offer Accepted'),
                                              ('sold','Sold'),
@@ -35,3 +35,9 @@ class EstateProperty(models.Model):
                              help='this is the state',
                              copy=False,
                              default='new')
+
+    property_type_id = fields.Many2one('estate.property.type', string = 'Property Type')
+    salesperson = fields.Many2one('res.users', string = 'Salesman')
+    buyer = fields.Many2one('res.partner', string = 'Buyer')
+    tag_ids = fields.Many2many('estate.property.tag', string = 'tags')
+    offer_ids = fields.One2many('estate.property.offer','partner_id', string = 'offers')
