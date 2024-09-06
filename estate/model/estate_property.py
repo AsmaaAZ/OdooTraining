@@ -1,7 +1,10 @@
 from email.policy import default
 
-from odoo import models, fields, api
+from odoo import models, fields, api, exceptions
 from datetime import datetime, timedelta
+
+from odoo.exceptions import UserError
+from odoo.tools.view_validation import validate
 
 
 class EstateProperty(models.Model):
@@ -66,3 +69,21 @@ class EstateProperty(models.Model):
         else:
             self.garden_area = 0
             self.garden_orientation = ''
+
+    def sold_property(self):
+        for record in self:
+            if record.state != 'canceled':
+                record.state = 'sold'
+                return True
+            else:
+                raise UserError("Canceled Properties Can Not Be Sold")
+                return False
+
+    def cancel_property(self):
+        for record in self:
+            if record.state != 'sold':
+                record.state = 'canceled'
+                return True
+            else:
+                raise UserError("Sold Properties Can not Be Canceled")
+                return False

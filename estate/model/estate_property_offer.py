@@ -1,3 +1,5 @@
+from pkgutil import read_code
+
 from odoo import models, fields, api
 from datetime import datetime, timedelta
 import logging
@@ -24,8 +26,15 @@ class EstatePropertyOffer(models.Model):
 
     def _inverse_compute_date_deadline(self):
         for record in self:
-            a = str(record.date_deadline)
-            b = str(datetime.today())
-            _logger.info(a)
-            _logger.info(b)
-            record.validity = a - b
+            record.validity = record.date_deadline - datetime.today()
+
+
+    def accept_offer(self):
+        for record in self:
+            record.status = 'accepted'
+            return True
+
+    def refuse_offer(self):
+        for record in self:
+            record.status = 'refused'
+            return True
