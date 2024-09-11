@@ -3,8 +3,7 @@ from email.policy import default
 from odoo import models, fields, api, exceptions
 from datetime import datetime, timedelta
 
-from odoo.exceptions import UserError
-from odoo.tools.view_validation import validate
+from odoo.exceptions import UserError, ValidationError
 
 
 class EstateProperty(models.Model):
@@ -87,3 +86,18 @@ class EstateProperty(models.Model):
             else:
                 raise UserError("Sold Properties Can not Be Canceled")
                 return False
+
+    #_sql_constraints = [('expected_price', 'CHECK(expected_price >= 0)', 'expected price must be positive'),
+     #                   ('check_selling_price', 'CHECK(selling_price >= 0)', 'selling price must be positive')]
+
+    @api.constrains('expected_price')
+    def _check_expected_price(self):
+        for record in self:
+            if record.expected_price <= 0:
+                raise ValidationError("expected cannot be less than 0")
+
+    @api.constrains('selling_price')
+    def _check_selling_price(self):
+        for record in self:
+            if record.selling_price < record.expected_price * 0.9:
+                raise ValidationError("the selling price can't be 90% less than expected price")
