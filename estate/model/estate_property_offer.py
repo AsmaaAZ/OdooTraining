@@ -11,6 +11,7 @@ _logger = logging.getLogger(__name__)
 class EstatePropertyOffer(models.Model):
     _name = "estate.property.offer"
     _description = "estate property offer model"
+    _order = "price desc"
 
     price = fields.Float()
     status = fields.Selection([('accepted','Accepted'),
@@ -20,6 +21,7 @@ class EstatePropertyOffer(models.Model):
     property_id = fields.Many2one('estate.property', required=True)
     validity = fields.Integer(default=7)
     date_deadline = fields.Date(compute='_compute_date_deadline', default = datetime.today())
+    property_type_id = fields.Many2one("estate.property.type", string="property type", related="property_id.property_type_id", store=True)
 
     @api.depends('validity')
     def _compute_date_deadline(self):
