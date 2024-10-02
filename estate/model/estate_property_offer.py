@@ -1,12 +1,8 @@
-from pkgutil import read_code
+import logging
 
 from odoo import models, fields, api
 from datetime import datetime, timedelta
-import logging
-
 from odoo.exceptions import ValidationError
-
-_logger = logging.getLogger(__name__)
 
 class EstatePropertyOffer(models.Model):
     _name = "estate.property.offer"
@@ -38,6 +34,7 @@ class EstatePropertyOffer(models.Model):
             record.status = 'accepted'
             record.property_id.selling_price = record.price
             record.property_id.buyer = record.partner_id
+            record.property_id.state = 'offer_accepted'
             return True
 
     def refuse_offer(self):
@@ -52,3 +49,29 @@ class EstatePropertyOffer(models.Model):
         for record in self:
             if record.price <= 0:
                 raise ValidationError("PRICE cannot be less than 0")
+
+    @api.model
+    def create(self, vals):
+        self.env['estate.property'].browse(vals['property_id']).state = 'offer_received'
+        list_prices = []
+        max_price = 0
+
+        for i in self.env['estate.property'].browse(vals['property_id']).offer_ids:
+            logging.error(i.price)
+            list_prices.append(i.price)
+
+        if len(list_prices) >= 1:
+            logging.error(" ****** ")
+            logging.error(list_prices)
+            logging.error(" ****** ")
+            max_price = max(list_prices)
+            logging.error(max_price)
+
+        logging.error(" ++++ ")
+        logging.error(self.env['estate.property'].browse(vals['property_id']).offer_ids.price)
+        if self.price <= max_price:
+            raise ValidationError("offer has to be higher than other offers")
+
+
+
+        return super(EstatePropertyOffer, self).create(vals)

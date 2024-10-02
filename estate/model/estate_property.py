@@ -1,10 +1,6 @@
-from email.policy import default
-
 from odoo import models, fields, api, exceptions
 from datetime import datetime, timedelta
-
 from odoo.exceptions import UserError, ValidationError
-
 
 class EstateProperty(models.Model):
     _name = "estate.property"
@@ -102,3 +98,8 @@ class EstateProperty(models.Model):
         for record in self:
             if record.selling_price < record.expected_price * 0.9:
                 raise ValidationError("the selling price can't be 90% less than expected price")
+
+    @api.ondelete(at_uninstall=False)
+    def _unlink(self):
+        if self.state not in ('new', 'canceled'):
+            raise UserError(f"you cant delete a property that is {self.state}")
