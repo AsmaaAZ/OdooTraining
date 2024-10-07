@@ -1,5 +1,5 @@
 <odoo>
-    <record id="real_estate_report_action" model="ir.actions.report">
+    <record id="estate_property_report_action" model="ir.actions.report">
         <field name="name">Real Estate Report</field>
         <field name="model">estate.property</field>
         <field name="report_type">qweb-pdf</field>
