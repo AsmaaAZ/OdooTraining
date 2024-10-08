@@ -1,5 +1,5 @@
 <odoo>
-    <menuitem id="real_estate_menu_root" name="Real Estate 0">
+    <menuitem id="real_estate_menu_root" name="Real Estate" web_icon="estate,static/description/pngtree-building-house-real-estate-icon-png-image_8669506.png">
         <menuitem id="real_estate_first_level_menu" name="Advertisements">
             <menuitem id="real_state_model_menu_action" action="real_estate_model_action"/>
         </menuitem>
