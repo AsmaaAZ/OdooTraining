@@ -61,7 +61,7 @@
             <form>
                 <header>
                     <field name="state" widget="statusbar" statusbar_visible="new,offer_received,offer_accepted,sold"/>
-                    <button name="sold_property" type="object" string="Sold" invisible="state in ('sold', 'canceled')"/>
+                    <button name="estate.action_sold_wizard" type="action" string="Sold" invisible="state in ('sold', 'canceled')"/>
                     <button name="cancel_property" type="object" string="Cancel" invisible="state in ('sold', 'canceled')"/>
                 </header>
                 <sheet>
