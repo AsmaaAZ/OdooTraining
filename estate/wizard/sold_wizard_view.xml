@@ -7,10 +7,10 @@
                 <group>
                     <field name="selling_price" />
                 </group>
-                <group>
+                <footer>
                     <button name="sold_action" string="Sold" type="object" class="btn-primary" />
                     <button string="Cancel" class="btn-secondary" special="cancel" />
-                </group>
+                </footer>
             </form>
         </field>
     </record>
