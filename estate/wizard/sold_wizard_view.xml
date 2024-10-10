@@ -8,7 +8,7 @@
                     <field name="selling_price" />
                 </group>
                 <footer>
-                    <button name="sold_action" string="Sold" type="object" class="btn-primary" />
+                    <button name="sold_action" string="Sold Property" type="object" class="btn-primary" />
                     <button string="Cancel" class="btn-secondary" special="cancel" />
                 </footer>
             </form>
