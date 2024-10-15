@@ -1,0 +1,10 @@
+<odoo>
+    <menuitem id="library_management_menu_root" name="Library Management" >
+        <menuitem id="library_management_first_level_menu" name="Books">
+            <menuitem id="library_book_model" action="library_book_model_action"/>
+        </menuitem>
+        <menuitem id="library_management_second_level_menu" name="Authors">
+            <menuitem id="library_author_model" action="library_author_model_action"/>
+        </menuitem>
+    </menuitem>
+</odoo>

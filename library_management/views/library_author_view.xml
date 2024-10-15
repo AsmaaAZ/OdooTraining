@@ -1,0 +1,35 @@
+<odoo>
+    <record id="library_author_model_action" model="ir.actions.act_window">
+        <field name="name">Library Author</field>
+        <field name="res_model">library.author</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="library_author_form" model="ir.ui.view">
+        <field name="name">Library Author</field>
+        <field name="model">library.author</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" string="Author Name"/>
+                        <field name="birth_date" string="Author Birth Date"/>
+                        <field name="book_ids" string="Book Name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="library_author_tree" model="ir.ui.view">
+        <field name="name">Library Author Tree</field>
+        <field name="model">library.author</field>
+        <field name="arch" type="xml">
+            <tree string="Library Author">
+                <field name="name" string="Author Name"/>
+                <field name="birth_date" string="Author Birth Date"/>
+                <field name="total_books" string="Total Books"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

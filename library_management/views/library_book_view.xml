@@ -1,0 +1,38 @@
+<odoo>
+    <record id="library_book_model_action" model="ir.actions.act_window">
+        <field name="name">Library Book</field>
+        <field name="res_model">library.book</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="library_book_form" model="ir.ui.view">
+        <field name="name">Library Book</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" string="name"/>
+                        <field name="isbn" string="ISBN"/>
+                        <field name="author_id" string="Author Name"/>
+                        <field name="publication_date" string="Publication Date"/>
+                        <field name="price" string="Price"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="library_book_tree" model="ir.ui.view">
+        <field name="name">Library Book Tree</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <tree string="Library Book">
+                <field name="name" string="name"/>
+                <field name="isbn" string="ISBN"/>
+                <field name="author_id" string="Author Name"/>
+                <field name="publication_date" string="Publication Date"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
