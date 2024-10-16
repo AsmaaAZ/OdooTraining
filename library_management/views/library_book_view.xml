@@ -11,12 +11,17 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <header>
+                        <button type="action" name="library_management.library_author_model_action" string="View Author" />
+                    </header>
                     <group>
                         <field name="name" string="name"/>
                         <field name="isbn" string="ISBN"/>
-                        <field name="author_id" string="Author Name"/>
                         <field name="publication_date" string="Publication Date"/>
                         <field name="price" string="Price"/>
+                    </group>
+                    <group>
+                        <field name="author_ids" string="Author Name"/>
                     </group>
                 </sheet>
             </form>
@@ -30,7 +35,7 @@
             <tree string="Library Book">
                 <field name="name" string="name"/>
                 <field name="isbn" string="ISBN"/>
-                <field name="author_id" string="Author Name"/>
+                <field name="author_ids" string="Author Name"/>
                 <field name="publication_date" string="Publication Date"/>
             </tree>
         </field>

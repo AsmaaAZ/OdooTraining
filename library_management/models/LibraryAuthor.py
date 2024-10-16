@@ -6,10 +6,10 @@ class LibraryAuthor(models.Model):
 
     name = fields.Char(required=True)
     birth_date = fields.Date(required = True)
-    book_ids = fields.One2many('library.book', 'author_id', string='Books')
+    book_id = fields.One2many('library.book', 'author_ids', string='Books')
+    book_ids = fields.Many2many('library.book',string='Books')
     total_books = fields.Integer(compute='_compute_total_books')
 
     def _compute_total_books(self):
-        # for record in self:
-        #     record.total_books = self.env['library.author'].search_count([('book_ids.author_id', '=', 'record.name')])
-        return 13
+         for record in self:
+             record.total_books = 14

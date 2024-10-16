@@ -1,5 +1,4 @@
 from odoo import models, fields, api
-from datetime import datetime
 from odoo.exceptions import UserError
 
 class LibraryBook(models.Model):
@@ -8,8 +7,9 @@ class LibraryBook(models.Model):
 
     name = fields.Char(required=True)
     isbn = fields.Char(copy = False)
-    author_id = fields.Many2one('library.author', string='Authors', required=True)
-    publication_date = fields.Date(default = datetime.today())
+    author_id = fields.One2many('library.author', 'book_ids',string='Authors', required=True)
+    author_ids = fields.Many2many('library.author',string='books', required=True)
+    publication_date = fields.Date(default = fields.Date.today)
     price = fields.Integer(required=True)
 
     @api.onchange("isbn")
