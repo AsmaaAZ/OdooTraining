@@ -13,7 +13,7 @@
                 <sheet>
                     <group>
                         <field name="name" string="Author Name"/>
-                        <field name="birth_date" string="Author Birth Date"/>
+                        <field name="birth_date" string="Author Birth Day"/>
                         <field name="book_ids" string="Book Name"/>
                     </group>
                 </sheet>
