@@ -6,6 +6,7 @@
               'views/library_book_view.xml',
               'views/library_author_view.xml',
               'views/library_menus.xml',
+              'report/library_book_report.xml',
               ],
     'depends':['base'],
     'application': True,

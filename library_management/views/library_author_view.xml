@@ -11,11 +11,16 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <header>
+                        <button type="object" name="number_of_books" string="How many book did this author write??" />
+                        <h1><field name="number_of_books_per_author" invisible="not show_number" readonly='true'/></h1>
+                    </header>
                     <group>
                         <field name="name" string="Author Name"/>
                         <field name="birth_date" string="Author Birth Day"/>
                         <field name="book_ids" string="Book Name"/>
                         <field name="total_books" string="Total Books"/>
+                        <field name="show_number" invisible="true"/>
                     </group>
                 </sheet>
             </form>
