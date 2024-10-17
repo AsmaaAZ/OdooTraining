@@ -12,4 +12,7 @@ class LibraryAuthor(models.Model):
 
     def _compute_total_books(self):
          for record in self:
-             record.total_books = 14
+             if len(self.book_ids) == 0:
+                 record.total_books = 0
+             else:
+                 record.total_books = len(self.book_ids)

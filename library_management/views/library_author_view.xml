@@ -15,6 +15,7 @@
                         <field name="name" string="Author Name"/>
                         <field name="birth_date" string="Author Birth Day"/>
                         <field name="book_ids" string="Book Name"/>
+                        <field name="total_books" string="Total Books"/>
                     </group>
                 </sheet>
             </form>
@@ -28,7 +29,6 @@
             <tree string="Library Author">
                 <field name="name" string="Author Name"/>
                 <field name="birth_date" string="Author Birth Date"/>
-                <field name="total_books" string="Total Books"/>
             </tree>
         </field>
     </record>
