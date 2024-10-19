@@ -1,0 +1,37 @@
+<odoo>
+    <record id="library_reservations_model_action" model="ir.actions.act_window">
+        <field name="name">Library Reservations</field>
+        <field name="res_model">library.reservations</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="library_reservations_form" model="ir.ui.view">
+        <field name="name">Library Reservation</field>
+        <field name="model">library.reservations</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="book_ids" />
+                    <field name="date_from" />
+                    <field name="return_date" />
+                    <field name="borrowing_period" />
+                    <field name="partner_id" />
+                    <field name="price" />
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="library_reservations_tree" model="ir.ui.view">
+        <field name="name">Library Reservation Tree</field>
+        <field name="model">library.reservations</field>
+        <field name="arch" type="xml">
+            <tree string="Library Book">
+                <field name="book_ids" widget="many2many_tags" string="Books Names" />
+                <field name="borrowing_period" />
+                <field name="partner_id" />
+                <field name="price" />
+            </tree>
+        </field>
+    </record>
+</odoo>

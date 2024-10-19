@@ -13,14 +13,13 @@
                 <sheet>
                     <header>
                         <button type="object" name="number_of_authors" string="How many authors worked on this book??" />
-                        <h1><field name="number_of_author_per_book" invisible="not show_number" readonly='true'/></h1>
+                        <h1><field name="number_of_author_per_book" invisible="number_of_author_per_book == 0" readonly='true'/></h1>
                     </header>
                     <group>
                         <field name="name" string="name"/>
                         <field name="isbn" string="ISBN"/>
                         <field name="publication_date" string="Publication Date"/>
                         <field name="price" string="Price"/>
-                        <field name="show_number" invisible="true"/>
                     </group>
                     <group>
                         <field name="author_ids" string="Author Name"/>

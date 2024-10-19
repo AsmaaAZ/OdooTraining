@@ -6,5 +6,8 @@
         <menuitem id="library_management_second_level_menu" name="Authors">
             <menuitem id="library_author_model" action="library_author_model_action"/>
         </menuitem>
+        <menuitem id="library_management_third_level_menu" name="Reservations">
+            <menuitem id="library_reservations_model" action="library_reservations_model_action"/>
+        </menuitem>
     </menuitem>
 </odoo>
